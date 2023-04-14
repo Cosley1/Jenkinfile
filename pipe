@@ -6,7 +6,7 @@ agent any
 	stages {
 	    stage('Fetch code') {
             steps {
-               git branch: 'jenk-build', url: 'https://github.com/engineeredwin/bootcamp01.git'
+               git branch: 'main', url: 'https://github.com/Cosley1/Jenkinfile.git
             }
 	    }
 	    stage('Build'){
@@ -22,7 +22,14 @@ agent any
 	    }
 	    stage('UNIT TEST') {
             steps{
-                sh 'mvn test'
+                sh 'mvn test'    }
+        }
+        stage('Checkstyle Analysis'){
+            steps {
+                sh 'mvn checkstyle:checkstyle'
             }
         }
-	}
+    }
+}
+		
+            
